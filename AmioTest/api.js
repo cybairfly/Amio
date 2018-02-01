@@ -28,10 +28,9 @@ const postMessage = (id, message) => {
   return axios(config);
 }
 
-const messageAll = (ids, message) => {
-  Promise.all(ids.map(id => postMessage(id, message)))
-  .then(messages => messages.map(message => message.data))
-  .then(messages => console.log(messages));
+const messageAll = async (ids, message) => {
+  let messages = await Promise.all(ids.map(id => postMessage(id, message)));
+  console.log(messages.map(message => message.data));
 }
 
 const notify = (notification) => {
