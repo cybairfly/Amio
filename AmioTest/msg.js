@@ -100,10 +100,9 @@ const Notify = (channel, contact) => {
 //new X() creates a new object with constructor X and prototype X.prototype.
 //Object.create(X) creates a new object with prototype X (and therefore constructor X.constructor)
 
-                                                                        //POJO
 /*
 const Request = (channel, contact) => {
-  const request = {
+  let request = {
     "channel": {
       "id": `${channel}`
     },
@@ -111,22 +110,8 @@ const Request = (channel, contact) => {
       "id": `${contact}`
     }
   }
-  return request;
-}
-
-const Message = (channel, contact) => {
-  const message = Request(channel, contact);
-  message.content = {
-      "type": `text`,
-      "payload": `message`
-  };
-  return message;
-}
-
-const Notify = (channel, contact) => {
-  const notification = Request(channel, contact);
-  notification.type = `message_read`;
-  return notification;
+  //empty object with prototype:
+  return Object.create(request);
 }
 */
 
