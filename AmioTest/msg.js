@@ -26,17 +26,38 @@ module.exports = {
   Message,
   Notify
 };
-*/
+
 /*
 const contact = {
   channel: channel,
   contact: contact
 };
+*/
+
+                                                                      //Factory
+/*
+const Request = (contact) => ({
+  channel: {
+    id: `${contact.channel}`
+  },
+  contact: {
+    id: `${contact.contact}`
+  }
+});
+
+let message = Request(contact);
+message.content = {
+    type: `text`
+};
+
+let notification = Request(contact);
+notification.type = "messages_read";
+*/
 
                                                                         //Class
 /*
 class Request {
-  constructor(channel, contact) {
+  constructor(channel = channel, contact = contact) {
     this.channel = {
       id: `${channel}`
     };
@@ -46,30 +67,19 @@ class Request {
   }
 }
 
-class MessageClass extends Request {
-  constructor(channel, contact, type = `text`, payload = null) {
-    super(channel, contact);
-    this.content = {
-      type,
-      payload
-    }
-  }
-}
+let message = new Request();
+message.content = {
+    "type": `text`,
+    "payload": `message`
+};
 
-class NotifyClass extends Request {
-  constructor(channel, contact, type = `messages_read`) {
-    super(channel, contact);
-    this.type = type;
-  }
-}
-
-const Message = (channel, contact) => new MessageClass(channel, contact);
-const Notify = (channel, contact) => new NotifyClass(channel, contact);
+let notification = new Request();
+notification.type = "messages_read";
 */
 
                                                                   //Constructor
 /*
-function Request(channel, contact) {
+function Request(channel = channel, contact = contact) {
   this.channel = {
     id: `${channel}`
   };
@@ -78,64 +88,33 @@ function Request(channel, contact) {
   };
 }
 
-function MessageMaker(channel, contact) {
-  Request.apply(this, arguments);
-  this.content = {
-    type: `text`,
-    payload: null
-  }
-}
+let message = new Request();
+message.content = {
+    "type": `text`,
+    "payload": `message`
+};
 
-function NotifyMaker(channel, contact) {
-  Request.apply(this, arguments);
-  this.type = `messages_read`;
-}
-
-const Message = (channel, contact) => {
-  return new MessageMaker(channel, contact);
-}
-
-const Notify = (channel, contact) => {
-  return new NotifyMaker(channel, contact);
-}
+let notification = new Request();
+notification.type = "messages_read";
 */
 
                                                                 //Object.create
-//impossible - creates empty objects with prototype from prototype template
-//new X() creates a new object with constructor X and prototype X.prototype.
-//Object.create(X) creates a new object with prototype X (and therefore constructor X.constructor)
-
-                                                                        //POJO
 /*
-const Request = (channel, contact) => {
-  const request = {
-    "channel": {
-      "id": `${channel}`
-    },
-    "contact": {
-      "id": `${contact}`
-    }
+let request = {
+  "channel": {
+    "id": `${channel}`
+  },
+  "contact": {
+    "id": `${contact}`
   }
-  return request;
 }
 
-const Message = (channel, contact) => {
-  const message = Request(channel, contact);
-  message.content = {
-      "type": `text`,
-      "payload": `message`
-  };
-  return message;
-}
-
-const Notify = (channel, contact) => {
-  const notification = Request(channel, contact);
-  notification.type = `message_read`;
-  return notification;
-}
-*/
-
-module.exports = {
-  Message,
-  Notify
+let message = Object.create(request);
+message.content = {
+    "type": `text`,
+    "payload": `message`
 };
+
+let notification = Object.create(request);
+notification.type = "messages_read";
+*/
