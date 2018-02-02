@@ -23,11 +23,6 @@ const Notify = (channel, contact) => {
   return request;
 };
 
-module.exports = {
-  Message,
-  Notify
-};
-
                                                                         //Class
 /*
 class Request {
