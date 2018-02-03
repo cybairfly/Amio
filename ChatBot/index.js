@@ -4,15 +4,8 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
-//const port = process.env.PORT || 443;
-// const options = {
-//     key: fs.readFileSync( './key.key' ),
-//     cert: fs.readFileSync( '/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt' ),
-//     requestCert: false,
-//     rejectUnauthorized: false
-// };
-// console.log(options.key);
-// console.log(options.cert);
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
 // Imports dependencies and set up http server
 const
   express = require('express'),
@@ -22,8 +15,7 @@ const
 const _http = http.createServer(app);
 // const _https = https.createServer(options, app);
 
-_http.listen(8080, () => console.log(`Listening on: ${_http.address().port}`));
-// _https.listen(8080, () => console.log(`Listening on: ${_https.address().port}`));
+_http.listen(port, () => console.log(`Listening on: ${_http.address().port}`));
 
 // Creates the endpoint for our webhook
 app.post('/webhook', (req, res) => {
