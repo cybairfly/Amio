@@ -11,7 +11,7 @@ const options = {
     requestCert: false,
     rejectUnauthorized: false
 };
-console.log(options.cert);return;
+console.log(options.cert);
 // Imports dependencies and set up http server
 const
   express = require('express'),
