@@ -12,7 +12,14 @@ const options = {
     requestCert: false,
     rejectUnauthorized: false
 };
-console.log(options.cert);return;
+console.log(fs.readdirSync('/'));
+console.log(fs.readdirSync('/var'));
+console.log(fs.readdirSync('/var/run'));
+console.log(fs.readdirSync('/var/run/secrets'));
+console.log(fs.readdirSync('/var/run/secrets/kubernetes.io'));
+console.log(fs.readdirSync('/var/run/secrets/kubernetes.io/serviceaccount'));
+
+//console.log(options.cert);return;
 // Imports dependencies and set up http server
 const
   express = require('express'),
