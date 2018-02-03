@@ -6,11 +6,12 @@ const https = require('https');
 
 //const port = process.env.PORT || 443;
 const options = {
-    //key: fs.readFileSync( './ssl/localhost.key' ),
+    key: fs.readFileSync( './key.key' ),
     cert: fs.readFileSync( '/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt' ),
     requestCert: false,
     rejectUnauthorized: false
 };
+console.log(options.key);
 console.log(options.cert);
 // Imports dependencies and set up http server
 const
@@ -18,8 +19,8 @@ const
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
 
-const _http = http.createServer(app);
-const _https = https.createServer(app);
+//const _http = http.createServer(app);
+const _https = https.createServer(options, app);
 
 //_http.listen(80, () => console.log(`Listening on: ${_http.address().port}`));
 _https.listen(8080, () => console.log(`Listening on: ${_https.address().port}`));
