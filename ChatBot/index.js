@@ -19,7 +19,7 @@ const
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
 
-//const _http = http.createServer(app);
+const _http = http.createServer(app);
 //const _https = https.createServer(options, app);
 
 //_http.listen(8080, () => console.log(`Listening on: ${_http.address().port}`));
@@ -79,4 +79,4 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.listen(8080, () => console.log(`Listening on: `));
+_http.listen(8080, () => console.log(`Listening on: ${_http.address().port}`));
