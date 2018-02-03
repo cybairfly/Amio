@@ -1,29 +1,29 @@
 'use strict';
-console.log('started');
+
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-console.log('required');
-//const port = process.env.PORT || 443;
-// const options = {
-//     key: fs.readFileSync( './ssl/localhost.key' ),
-//     cert: fs.readFileSync( './ssl/localhost.cert' ),
-//     requestCert: false,
-//     rejectUnauthorized: false
-// };
 
+//const port = process.env.PORT || 443;
+const options = {
+    //key: fs.readFileSync( './ssl/localhost.key' ),
+    cert: fs.readFileSync( './kubernetes.io/serviceaccount/service-ca.crt' ),
+    requestCert: false,
+    rejectUnauthorized: false
+};
+console.log(options.cert);
 // Imports dependencies and set up http server
 const
   express = require('express'),
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
-console.log('required');
+
 const _http = http.createServer(app);
 const _https = https.createServer(options, app);
-console.log('served');
-_http.listen(80, () => console.log(`Listening on: ${_http.address().port}`));
-//_https.listen(443, () => console.log(`Listening on: ${_https.address().port}`));
-console.log('listening');
+
+//_http.listen(80, () => console.log(`Listening on: ${_http.address().port}`));
+_https.listen(8080, () => console.log(`Listening on: ${_https.address().port}`));
+
 // Creates the endpoint for our webhook
 app.post('/webhook', (req, res) => {
 
