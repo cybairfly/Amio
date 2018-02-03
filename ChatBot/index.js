@@ -22,7 +22,7 @@ const
 const _http = http.createServer(app);
 // const _https = https.createServer(options, app);
 
-_http.listen(80, () => console.log(`Listening on: ${_http.address().port}`));
+_http.listen(8080, () => console.log(`Listening on: ${_http.address().port}`));
 // _https.listen(8080, () => console.log(`Listening on: ${_https.address().port}`));
 
 // Creates the endpoint for our webhook
