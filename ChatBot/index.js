@@ -4,7 +4,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
-//const port = process.env.PORT || 443;
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 // const options = {
 //     key: fs.readFileSync( './key.key' ),
 //     cert: fs.readFileSync( '/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt' ),
@@ -79,5 +79,5 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.listen(8080);
+app.listen(port);
 console.log(`Listening on: `);
