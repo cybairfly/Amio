@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node",
-    "test": "node test.js"
+    "start": "node index",
+    "test": "node test"
   },
   "author": "Tobey",
   "license": "ISC",

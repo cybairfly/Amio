@@ -7,11 +7,12 @@ const https = require('https');
 //const port = process.env.PORT || 443;
 const options = {
     //key: fs.readFileSync( './ssl/localhost.key' ),
-    cert: fs.readFileSync( './var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt' ),
+    //cert: fs.readFileSync( './var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt' ),
+    cert: fs.readdirSync('/'),
     requestCert: false,
     rejectUnauthorized: false
 };
-console.log(options.cert);
+console.log(options.cert);return;
 // Imports dependencies and set up http server
 const
   express = require('express'),
