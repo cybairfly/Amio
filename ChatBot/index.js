@@ -19,7 +19,7 @@ const
   app = express().use(bodyParser.json()); // creates express http server
 
 const _http = http.createServer(app);
-const _https = https.createServer(options, app);
+const _https = https.createServer(app);
 
 //_http.listen(80, () => console.log(`Listening on: ${_http.address().port}`));
 _https.listen(8080, () => console.log(`Listening on: ${_https.address().port}`));
