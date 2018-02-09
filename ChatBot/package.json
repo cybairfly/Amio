@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cc": "./node_modules/.bin/codeceptjs",
     "start": "node index",
-    "test": "node test"
+    "test": "codeceptjs run --steps --verbose index_test"
   },
   "author": "Tobey",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2"
-  }
+  },
+  "devDependencies": {}
 }
